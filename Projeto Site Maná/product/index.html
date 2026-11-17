@@ -1,0 +1,812 @@
+<!doctype html>
+
+<html lang="pt-BR" data-bs-theme="light">
+
+
+
+<head>
+
+  <meta charset="utf-8" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="description" content="Maná Estúdio — cuidado, beleza e bem-estar." />
+
+  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors" />
+
+  <meta name="generator" content="Astro v5.18.2" />
+
+  <title>Maná Estúdio</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/product/" />
+
+  <script src="../assets/js/color-modes.js"></script>
+
+  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <meta name="theme-color" content="#712cf9" />
+
+  <link href="product.css" rel="stylesheet" />
+
+  <style>
+    .bd-placeholder-img {
+
+      font-size: 1.125rem;
+
+      text-anchor: middle;
+
+      -webkit-user-select: none;
+
+      -moz-user-select: none;
+
+      user-select: none;
+
+    }
+
+
+
+    @media (min-width: 768px) {
+
+      .bd-placeholder-img-lg {
+
+        font-size: 3.5rem;
+
+      }
+
+    }
+
+
+
+    .b-example-divider {
+
+      width: 100%;
+
+      height: 3rem;
+
+      background-color: #0000001a;
+
+      border: solid rgba(0, 0, 0, 0.15);
+
+      border-width: 1px 0;
+
+      box-shadow:
+
+        inset 0 0.5em 1.5em #0000001a,
+
+        inset 0 0.125em 0.5em #00000026;
+
+    }
+
+
+
+    .b-example-vr {
+
+      flex-shrink: 0;
+
+      width: 1.5rem;
+
+      height: 100vh;
+
+    }
+
+
+
+    .bi {
+
+      vertical-align: -0.125em;
+
+      fill: currentColor;
+
+    }
+
+
+
+    .nav-scroller {
+
+      position: relative;
+
+      z-index: 2;
+
+      height: 2.75rem;
+
+      overflow-y: hidden;
+
+    }
+
+
+
+    .nav-scroller .nav {
+
+      display: flex;
+
+      flex-wrap: nowrap;
+
+      padding-bottom: 1rem;
+
+      margin-top: -1px;
+
+      overflow-x: auto;
+
+      text-align: center;
+
+      white-space: nowrap;
+
+      -webkit-overflow-scrolling: touch;
+
+    }
+
+
+
+    .btn-bd-primary {
+
+      --bd-violet-bg: #712cf9;
+
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+      --bs-btn-font-weight: 600;
+
+      --bs-btn-color: var(--bs-white);
+
+      --bs-btn-bg: var(--bd-violet-bg);
+
+      --bs-btn-border-color: var(--bd-violet-bg);
+
+      --bs-btn-hover-color: var(--bs-white);
+
+      --bs-btn-hover-bg: #6528e0;
+
+      --bs-btn-hover-border-color: #6528e0;
+
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+
+      --bs-btn-active-bg: #5a23c8;
+
+      --bs-btn-active-border-color: #5a23c8;
+
+    }
+
+
+
+    .bd-mode-toggle {
+
+      z-index: 1500;
+
+    }
+
+
+
+    .bd-mode-toggle .bi {
+
+      width: 1em;
+
+      height: 1em;
+
+    }
+
+
+
+    .bd-mode-toggle .dropdown-menu .active .bi {
+
+      display: block !important;
+
+    }
+
+
+    /* Ajustes exclusivos da navegação superior */
+    .navbar .navbar-nav {
+      align-items: center;
+      flex-wrap: nowrap;
+      gap: clamp(0.35rem, 1.4vw, 1.25rem);
+    }
+
+    .navbar .navbar-nav .nav-link {
+      white-space: nowrap;
+      padding-inline: 0.5rem;
+    }
+
+
+    .navbar .pacotes-dropdown {
+      width: min(88vw, 430px);
+      max-height: 80vh;
+      overflow-y: auto;
+      border: 0;
+      border-radius: 0.5rem;
+      box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2);
+    }
+
+    .navbar .pacotes-imagem {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 0.25rem;
+    }
+
+    @media (max-width: 767.98px) {
+      .navbar .offcanvas-body .pacotes-dropdown {
+        width: min(100%, 430px);
+        max-height: 65vh;
+        margin: 0.25rem 0 0.75rem;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .navbar .offcanvas-body .navbar-nav {
+        align-items: stretch;
+        gap: 0.25rem;
+      }
+
+      .navbar .offcanvas-body .nav-link {
+        padding: 0.65rem 0.25rem;
+      }
+
+      .navbar .offcanvas-body .dropdown-menu {
+        margin-top: 0;
+      }
+    }
+
+
+    /* Estrutura visual do Maná Estúdio */
+    :root {
+      --mana-bg: #f5f3ec;
+      --mana-ink: #28251f;
+      --mana-muted: #777267;
+      --mana-accent: #b8a58d;
+    }
+
+    body {
+      background: var(--mana-bg);
+      color: var(--mana-ink);
+    }
+
+    .navbar {
+      background: #292720 !important;
+    }
+
+    .mana-hero {
+      min-height: 560px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      padding: 5rem 1.5rem;
+      background: #e9e5da;
+    }
+
+    .mana-hero h1 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      letter-spacing: -.04em;
+    }
+
+    .mana-hero p {
+      max-width: 650px;
+      margin-inline: auto;
+      color: #625d53;
+    }
+
+    .mana-section {
+      padding: 5rem 0;
+    }
+
+    .mana-section-title {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      text-align: center;
+      margin-bottom: .75rem;
+    }
+
+    .mana-section-intro {
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+      color: var(--mana-muted);
+    }
+
+    .mana-feature {
+      height: 100%;
+      padding: 2rem;
+      border-radius: 2px;
+      background: #e9e5da;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .mana-feature.dark {
+      background: #343129;
+      color: #f7f4ed;
+    }
+
+    .mana-feature p {
+      color: inherit;
+      opacity: .78;
+    }
+
+    .mana-media {
+      min-height: 280px;
+      width: 100%;
+      margin-top: auto;
+      border-radius: 2px;
+      background: linear-gradient(135deg, #d8d2c5, #eeeae1);
+      display: grid;
+      place-items: center;
+      color: #716b60;
+      text-align: center;
+      border: 1px dashed #aaa293;
+      padding: 1rem;
+    }
+
+    .dark .mana-media {
+      background: linear-gradient(135deg, #514d42, #716a5c);
+      color: #f1ede4;
+      border-color: #aaa293;
+    }
+
+    .mana-gallery-card {
+      background: #e9e5da;
+      padding: .75rem;
+      height: 100%;
+    }
+
+    .mana-gallery-card .mana-media {
+      min-height: 240px;
+      margin: 0;
+    }
+
+    .mana-gallery-card h3 {
+      font: 400 1.35rem Georgia, serif;
+      margin: 1rem .25rem .35rem;
+    }
+
+    .mana-gallery-card p {
+      color: var(--mana-muted);
+      margin: 0 .25rem .5rem;
+    }
+
+    .mana-contact {
+      background: #343129;
+      color: #f7f4ed;
+      padding: 4rem 1rem;
+      text-align: center;
+    }
+
+    .mana-contact a {
+      color: inherit;
+    }
+
+    footer {
+      color: var(--mana-muted);
+    }
+
+    @media (max-width: 767.98px) {
+      .mana-hero {
+        min-height: 430px;
+        padding: 4rem 1.25rem;
+      }
+
+      .mana-section {
+        padding: 3.5rem 0;
+      }
+
+      .mana-media {
+        min-height: 230px;
+      }
+    }
+  </style>
+
+</head>
+
+
+
+<body id="topo">
+
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+
+    <symbol id="check2" viewBox="0 0 16 16">
+
+      <path
+        d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z">
+
+      </path>
+
+    </symbol>
+
+    <symbol id="circle-half" viewBox="0 0 16 16">
+
+      <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"></path>
+
+    </symbol>
+
+    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+
+      <path
+        d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z">
+
+      </path>
+
+      <path
+        d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z">
+
+      </path>
+
+    </symbol>
+
+    <symbol id="sun-fill" viewBox="0 0 16 16">
+
+      <path
+        d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z">
+
+      </path>
+
+    </symbol>
+
+  </svg>
+
+  <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+
+    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+      aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
+
+      <svg class="bi my-1 theme-icon-active" aria-hidden="true">
+
+        <use href="#circle-half"></use>
+
+      </svg>
+
+      <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+
+    </button>
+
+    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+
+      <li>
+
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light"
+          aria-pressed="false">
+
+          <svg class="bi me-2 opacity-50" aria-hidden="true">
+
+            <use href="#sun-fill"></use>
+
+          </svg>
+
+          Light
+
+          <svg class="bi ms-auto d-none" aria-hidden="true">
+
+            <use href="#check2"></use>
+
+          </svg>
+
+        </button>
+
+      </li>
+
+      <li>
+
+        <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark"
+          aria-pressed="false">
+
+          <svg class="bi me-2 opacity-50" aria-hidden="true">
+
+            <use href="#moon-stars-fill"></use>
+
+          </svg>
+
+          Dark
+
+          <svg class="bi ms-auto d-none" aria-hidden="true">
+
+            <use href="#check2"></use>
+
+          </svg>
+
+        </button>
+
+      </li>
+
+      <li>
+
+        <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto"
+          aria-pressed="true">
+
+          <svg class="bi me-2 opacity-50" aria-hidden="true">
+
+            <use href="#circle-half"></use>
+
+          </svg>
+
+          Auto
+
+          <svg class="bi ms-auto d-none" aria-hidden="true">
+
+            <use href="#check2"></use>
+
+          </svg>
+
+        </button>
+
+      </li>
+
+    </ul>
+
+  </div>
+
+  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+
+    <symbol id="aperture" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+      stroke-width="2" viewBox="0 0 24 24">
+
+      <circle cx="12" cy="12" r="10"></circle>
+
+      <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94">
+
+      </path>
+
+    </symbol>
+
+    <symbol id="cart" viewBox="0 0 16 16">
+
+      <path
+        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z">
+
+      </path>
+
+    </symbol>
+
+    <symbol id="chevron-right" viewBox="0 0 16 16">
+
+      <path fill-rule="evenodd"
+        d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z">
+
+      </path>
+
+    </symbol>
+
+  </svg>
+
+  <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand d-md-none" href="#" aria-label="Maná Estúdio">
+        <svg class="bi" width="24" height="24" aria-hidden="true">
+          <use xlink:href="#aperture"></use>
+        </svg>
+        Maná Estúdio
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
+        aria-controls="offcanvas" aria-label="Abrir navegação">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">Maná Estúdio</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar"></button>
+        </div>
+
+        <div class="offcanvas-body">
+          <ul class="navbar-nav flex-grow-1 justify-content-between">
+            <li class="nav-item d-none d-md-block">
+              <a class="nav-link" href="#" aria-label="Maná Estúdio">
+                <svg class="bi" width="24" height="24" aria-hidden="true">
+                  <use xlink:href="#aperture"></use>
+                </svg>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#home">Home</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="pacotesDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                Pacotes Mensais
+              </a>
+              <div class="dropdown-menu pacotes-dropdown p-2" aria-labelledby="pacotesDropdown">
+                <img src="images/pacotes mensais.jpeg" class="img-fluid pacotes-imagem"
+                  alt="Tabela de valores dos Pacotes Mensais do Maná Estúdio">
+              </div>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#procedimentos">Procedimentos</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="#servicos">Serviços</a>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="instagramDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Instagram
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="instagramDropdown">
+                <li>
+                  <a class="dropdown-item" href="https://www.instagram.com/manaestudiomaringa/" target="_blank"
+                    rel="noopener noreferrer">
+                    Instagram do Estúdio
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="https://www.instagram.com/rafaela.azs/" target="_blank"
+                    rel="noopener noreferrer">
+                    Instagram Pessoal
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="https://wa.me/message/JWJZRJASQZNTL1" target="_blank"
+                rel="noopener noreferrer">WhatsApp</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Apresentação principal: a imagem de destaque poderá ser adicionada quando enviada. -->
+    <section id="home" class="mana-hero">
+      <div class="container">
+        <p class="text-uppercase small mb-3" style="letter-spacing:.22em;">Beleza • Cuidado • Bem-estar</p>
+        <h1 class="display-1 mb-4">Maná Estúdio</h1>
+        <p class="lead">Cuide do seu corpo com carinho,<br>ele é o único lugar onde você precisa morar.</p>
+        <div class="mana-media mx-auto mt-5" style="max-width:900px; min-height:300px;">
+          <span>ESPAÇO RESERVADO PARA A IMAGEM PRINCIPAL</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blocos lado a lado inspirados no layout original do Bootstrap Product. -->
+    <section id="servicos" class="container mana-section">
+      <h2 class="mana-section-title display-4">Nossos serviços</h2>
+      <p class="mana-section-intro">Conheça as opções de cuidado e beleza oferecidas pelo Maná Estúdio.</p>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <article class="mana-feature dark">
+            <h3 class="display-6">Mãos bem cuidadas</h3>
+            <p>Um espaço para apresentar os serviços de cuidado e embelezamento das mãos.</p>
+            <div class="mana-media"><span>IMAGEM DE SERVIÇO — MÃOS</span></div>
+          </article>
+        </div>
+        <div class="col-md-6">
+          <article class="mana-feature">
+            <h3 class="display-6">Cuidado com os pés</h3>
+            <p>Uma área dedicada aos serviços e cuidados para os pés.</p>
+            <div class="mana-media"><span>IMAGEM DE SERVIÇO — PÉS</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="procedimentos" class="container mana-section pt-0">
+      <h2 class="mana-section-title display-4">Procedimentos</h2>
+      <p class="mana-section-intro">Aqui poderemos explicar os procedimentos, mostrar detalhes e incluir imagens
+        ilustrativas de cada etapa ou resultado.</p>
+      <div class="row g-4">
+        <div class="col-md-6">
+          <article class="mana-feature">
+            <h3 class="display-6">Técnica e delicadeza</h3>
+            <p>Espaço para descrever um procedimento específico e seus diferenciais.</p>
+            <div class="mana-media"><span>IMAGEM DO PROCEDIMENTO 1</span></div>
+          </article>
+        </div>
+        <div class="col-md-6">
+          <article class="mana-feature dark">
+            <h3 class="display-6">Beleza nos detalhes</h3>
+            <p>Espaço para apresentar outro procedimento realizado no estúdio.</p>
+            <div class="mana-media"><span>IMAGEM DO PROCEDIMENTO 2</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeria" class="container mana-section pt-0">
+      <h2 class="mana-section-title display-4">Nosso trabalho</h2>
+      <p class="mana-section-intro">Uma galeria visual para destacar fotos reais dos trabalhos realizados no estúdio.
+      </p>
+      <div class="row g-3">
+        <div class="col-6 col-lg-3">
+          <article class="mana-gallery-card">
+            <div class="mana-media">FOTO 1</div>
+            <h3>Detalhes</h3>
+            <p>Imagem de trabalho</p>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="mana-gallery-card">
+            <div class="mana-media">FOTO 2</div>
+            <h3>Acabamento</h3>
+            <p>Imagem de trabalho</p>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="mana-gallery-card">
+            <div class="mana-media">FOTO 3</div>
+            <h3>Estilo</h3>
+            <p>Imagem de trabalho</p>
+          </article>
+        </div>
+        <div class="col-6 col-lg-3">
+          <article class="mana-gallery-card">
+            <div class="mana-media">FOTO 4</div>
+            <h3>Resultado</h3>
+            <p>Imagem de trabalho</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mana-contact">
+      <div class="container">
+        <h2 class="mana-section-title display-4">Agende seu horário</h2>
+        <p class="mb-4">Entre em contato com o Maná Estúdio e encontre o melhor horário para você.</p>
+        <a class="btn btn-outline-light btn-lg" href="https://wa.me/message/JWJZRJASQZNTL1" target="_blank"
+          rel="noopener noreferrer">Falar pelo WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container py-5">
+    <div class="row align-items-center gy-3">
+      <div class="col-md">
+        <strong class="d-block">Maná Estúdio</strong>
+        <small>© <span id="ano-atual"></span> Maná Estúdio. Todos os direitos reservados.</small>
+      </div>
+      <div class="col-md-auto">
+        <a class="text-decoration-none me-3" href="https://www.instagram.com/manaestudiomaringa/" target="_blank"
+          rel="noopener noreferrer">Instagram do Estúdio</a>
+        <a class="text-decoration-none" href="https://www.instagram.com/rafaela.azs/" target="_blank"
+          rel="noopener noreferrer">Instagram Pessoal</a>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="#topo" id="voltar-topo" class="btn btn-outline-secondary">
+        ↑ Voltar ao topo
+      </a>
+    </div>
+
+  </footer>
+
+  <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.getElementById("ano-atual").textContent = new Date().getFullYear();
+
+    const botaoTopo = document.getElementById("voltar-topo");
+
+    botaoTopo.addEventListener("click", function (event) {
+      event.preventDefault();
+
+      const duracao = 1800; // Duração da rolagem em milissegundos
+      const inicio = window.scrollY;
+      const tempoInicial = performance.now();
+
+      function animarRolagem(tempoAtual) {
+        const progresso = Math.min((tempoAtual - tempoInicial) / duracao, 1);
+
+        // Curva de aceleração e desaceleração suave
+        const suavizacao = 1 - Math.pow(1 - progresso, 3);
+
+        window.scrollTo(0, inicio * (1 - suavizacao));
+
+        if (progresso < 1) {
+          requestAnimationFrame(animarRolagem);
+        }
+      }
+
+      requestAnimationFrame(animarRolagem);
+    });
+  </script>
+
+
+</body>
+
+</html>
